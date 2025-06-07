@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import type { SkipType } from "./types/skip"
+import Skip from "./components/skip"
 
 function App() {
   const [skips, setSkips] = useState<SkipType[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
+  const [selectedSkip, setSelectedSkip] = useState<SkipType | null>(null)
 
   useEffect(() => {
     const fetchSkips = async () => {
@@ -15,6 +17,7 @@ function App() {
         }
         const data: SkipType[] = await response.json()
         setSkips(data)
+        setSelectedSkip(data[0] ?? null)
       } catch (err: any) {
         setError(err.message)
       } finally {
@@ -30,20 +33,8 @@ function App() {
 
   return (
     <div>
-      <h2>Available Skips</h2>
-      <ul>
-        {skips.map((skip) => (
-          <li key={skip.id}>
-            <strong>Size:</strong> {skip.size} yards
-            <strong> Hire Days:</strong> {skip.hire_period_days}
-            <strong> Price :</strong> £{skip.price_before_vat}
-            <strong> allowed on road :</strong>
-            {skip.allowed_on_road.toString()}
-            <strong> allows heavy waste :</strong>
-            {skip.allows_heavy_waste.toString()}
-          </li>
-        ))}
-      </ul>
+      <h3>select skip size :</h3>
+      {selectedSkip && <Skip skip={selectedSkip} />}
     </div>
   )
 }

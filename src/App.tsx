@@ -3,7 +3,7 @@ import type { SkipType } from "./types/skip"
 import Skip from "./components/skip"
 import SizeSelector from "./components/sizeSelector"
 import Footer from "./components/footer"
-import Toast from "./components/toast"
+import { motion, AnimatePresence } from "framer-motion"
 
 function App() {
   const [skips, setSkips] = useState<SkipType[]>([])
@@ -50,7 +50,19 @@ function App() {
         selectedSize={selectedSkip?.size}
         onSelect={onSelect}
       />
-      <Skip skip={selectedSkip} />
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={selectedSkip.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
+        >
+          <Skip skip={selectedSkip} />
+        </motion.div>
+      </AnimatePresence>
+
       <Footer />
     </div>
   )

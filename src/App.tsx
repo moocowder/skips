@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import type { SkipType } from "./types/skip"
 import Skip from "./components/skip"
 import SizeSelector from "./components/sizeSelector"
+import Footer from "./components/footer"
+import Toast from "./components/toast"
 
 function App() {
   const [skips, setSkips] = useState<SkipType[]>([])
@@ -39,14 +41,17 @@ function App() {
   if (!selectedSkip) return <p> no selected skips</p>
 
   return (
-    <div>
-      <h3>select skip size :</h3>
+    <div className="m-4">
+      <h3 className="text-3xl font-medium text-center">
+        Choose Your Skip Size
+      </h3>
       <SizeSelector
         sizes={skips.map((skip) => skip.size)}
         selectedSize={selectedSkip?.size}
         onSelect={onSelect}
       />
       <Skip skip={selectedSkip} />
+      <Footer />
     </div>
   )
 }

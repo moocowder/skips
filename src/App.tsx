@@ -5,6 +5,7 @@ import SizeSelector from "./components/sizeSelector"
 import Footer from "./components/footer"
 import { motion, AnimatePresence } from "framer-motion"
 import { useSkips } from "./hooks/useSkips"
+import Stepper from "./components/stepper"
 
 function App() {
   const { skips, loading, error } = useSkips()
@@ -28,6 +29,7 @@ function App() {
   return (
     <div>
       <div id="background"></div>
+      <Stepper />
       {/* container */}
       <div className="max-w-2xl mx-2 sm:mx-auto mt-24">
         <h3 className="font-francois text-6xl font-bold text-center text-green-400 mb-8">

@@ -41,28 +41,33 @@ function App() {
   if (!selectedSkip) return <p> no selected skips</p>
 
   return (
-    <div className="m-4">
-      <h3 className="text-3xl font-medium text-center">
-        Choose Your Skip Size
-      </h3>
-      <SizeSelector
-        sizes={skips.map((skip) => skip.size)}
-        selectedSize={selectedSkip?.size}
-        onSelect={onSelect}
-      />
+    <div>
+      <div id="background"></div>
+      {/* container */}
+      <div className="max-w-2xl mx-auto mt-24">
+        <h3 className="font-francois text-6xl font-bold text-center text-green-400 mb-8">
+          CHOOSE YOUR SKIP SIZE
+        </h3>
+        <SizeSelector
+          sizes={skips.map((skip) => skip.size)}
+          selectedSize={selectedSkip?.size}
+          onSelect={onSelect}
+        />
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={selectedSkip.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.2 }}
-        >
-          <Skip skip={selectedSkip} />
-        </motion.div>
-      </AnimatePresence>
-
+        {/* skip component */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedSkip.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Skip skip={selectedSkip} />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      {/* footer */}
       <Footer />
     </div>
   )

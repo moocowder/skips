@@ -1,3 +1,5 @@
+import { TriangleAlert } from "lucide-react"
+
 type Props = {
   type: "error" | "warning"
   text: string
@@ -11,9 +13,10 @@ const typeStyles = {
 export default function Toast({ type, text }: Props) {
   return (
     <div
-      className={`rounded-xl px-4 py-3 font-medium ${typeStyles[type]}`}
+      className={`rounded-xl px-4 py-3 font-medium ${typeStyles[type]} flex gap-2 items-center`}
       role="alert"
     >
+      <TriangleAlert className="w-6 h-6" />
       {text}
     </div>
   )

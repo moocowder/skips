@@ -4,37 +4,22 @@ import Skip from "./components/skip"
 import SizeSelector from "./components/sizeSelector"
 import Footer from "./components/footer"
 import { motion, AnimatePresence } from "framer-motion"
+import { useSkips } from "./hooks/useSkips"
 
 function App() {
-  const [skips, setSkips] = useState<SkipType[]>([])
-  const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<string | null>(null)
+  const { skips, loading, error } = useSkips()
   const [selectedSkip, setSelectedSkip] = useState<SkipType | null>(null)
-
-  useEffect(() => {
-    const fetchSkips = async () => {
-      try {
-        const response = await fetch(import.meta.env.VITE_API_URL)
-        if (!response.ok) {
-          throw new Error(`HTTP error: ${response.status}`)
-        }
-        const data: SkipType[] = await response.json()
-        setSkips(data)
-        setSelectedSkip(data[0] ?? null)
-      } catch (err: any) {
-        setError(err.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchSkips()
-  }, [])
 
   const onSelect = (size: number) => {
     const selectedSkip = skips.find((skip) => skip.size === size)
     setSelectedSkip(selectedSkip ?? null)
   }
+
+  useEffect(() => {
+    if (skips.length > 0) {
+      setSelectedSkip(skips[0])
+    }
+  }, [skips])
 
   if (loading) return <p>Loading skips...</p>
   if (error) return <p>Error: {error}</p>

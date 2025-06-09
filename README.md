@@ -49,5 +49,8 @@ My redesign takes a **minimalist, task-focused approach** by presenting **one sk
 
 ## 🧪 How to Test
 
+Live preview available at:  
+🔗 [https://skips-beta.vercel.app/](https://skips-beta.vercel.app/)
+
 Sandbox available at:  
 🔗 [https://stackblitz.com/~/github.com/moocowder/skips](https://stackblitz.com/~/github.com/moocowder/skips)

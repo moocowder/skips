@@ -1,25 +1,14 @@
 import { AlertTriangle } from "lucide-react"
+import { Bouton } from "./bouton"
 
 export default function Footer() {
   return (
     <div className="mx-4 my-8">
       <div className="flex justify-end gap-4 mb-4">
-        <button
-          className={`font-francois px-5 py-3 text-lg font-semibold text-white rounded-lg transition-all duration-300 
-         border-2 border-green-400 hover:bg-cyan-400 hover:border-cyan-400 hover:text-black cursor-pointer
-         flex gap-2 items-center justify-between
-         `}
-        >
+        <Bouton className="flex-1 sm:flex-initial" variant="secondary">
           BACK
-        </button>
-        <button
-          className={`font-francois px-5 py-3 text-lg font-semibold text-black rounded-md transition-all duration-300 
-         bg-green-400 hover:bg-cyan-400 cursor-pointer
-         flex gap-2 items-center justify-between
-         `}
-        >
-          CONTINUE
-        </button>
+        </Bouton>
+        <Bouton className="flex-1 sm:flex-initial">CONTINUE</Bouton>
       </div>
       <div className="text-gray-600 text-sm text-center">
         <AlertTriangle className="inline w-4 h-4 mr-1 align-text-top" />

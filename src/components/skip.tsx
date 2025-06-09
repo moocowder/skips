@@ -4,7 +4,7 @@ import Toast from "./toast"
 
 export default function Skip({ skip }: { skip: SkipType }) {
   return (
-    <div className="w-full ">
+    <div className="w-full">
       <h2 className="font-francois text-4xl font-semibold mb-4">
         {skip.size} Yard Skip
       </h2>
@@ -27,11 +27,15 @@ export default function Skip({ skip }: { skip: SkipType }) {
           <Toast type="error" text="Not Suitable For Heavy Waste" />
         )}
       </div>
-      <img
-        src={`${import.meta.env.VITE_STORAGE_URL}/${skip.size}-yarder-skip.jpg`}
-        alt={`${skip.size} yard skip`}
-        className="w-full h-auto rounded-md object-contain"
-      />
+      <div className="w-full aspect-[4/3] relative rounded-md overflow-hidden bg-gray-900/10">
+        <img
+          src={`${import.meta.env.VITE_STORAGE_URL}/${
+            skip.size
+          }-yarder-skip.jpg`}
+          alt={`${skip.size} yard skip`}
+          className="w-full h-full object-cover absolute top-0 left-0"
+        />
+      </div>
     </div>
   )
 }

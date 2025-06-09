@@ -44,7 +44,7 @@ function App() {
     <div>
       <div id="background"></div>
       {/* container */}
-      <div className="max-w-2xl mx-auto mt-24">
+      <div className="max-w-2xl mx-2 sm:mx-auto mt-24">
         <h3 className="font-francois text-6xl font-bold text-center text-green-400 mb-8">
           CHOOSE YOUR SKIP SIZE
         </h3>
